@@ -122,7 +122,12 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="knapsack.cpp" />
     <ClCompile Include="lis.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="meetings.cpp">
       <SubType>
       </SubType>
     </ClCompile>
