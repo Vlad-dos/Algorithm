@@ -49,9 +49,11 @@ int main() {
 		gena::main();
 		close_io();
 		open_io("input.txt", "dummy_output.txt");
+		cin.clear();
 		dummy::main();
 		close_io();
 		open_io("input.txt", "patient_output.txt");
+		cin.clear();
 		patient::main();
 		close_io();
 		open_io();

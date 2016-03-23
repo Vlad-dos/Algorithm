@@ -77,7 +77,7 @@ using namespace gena;
 int gena::main() {
 	int k = 0;
 	k = rand() % 80;
-	cout << k;
+	cout << k << endl;
 
 	return 0;
 }

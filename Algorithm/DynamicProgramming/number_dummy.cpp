@@ -83,7 +83,6 @@ namespace number_dummy {
 	}
 
 	int main() {
-		cin.clear();
 		int n;
 		cin >> n;
 		ll i = 0;

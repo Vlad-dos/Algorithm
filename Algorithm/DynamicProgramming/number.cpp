@@ -80,7 +80,6 @@ namespace number {
 	int pow[MAXN];
 
 	int main() {
-		cin.clear();
 		cin >> n;
 		if (n == 0)
 			return 0;
