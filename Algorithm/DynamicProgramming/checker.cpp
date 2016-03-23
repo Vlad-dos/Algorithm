@@ -28,7 +28,7 @@
 
 using namespace std;
 
-void open_io(char input[] = "CON", char output[] = "CON") {
+void open_io(const char *input = "CON", const char *output = "CON") {
 	freopen(input, "r", stdin);
 	freopen(output, "w", stdout);
 }
@@ -43,17 +43,16 @@ int cnt = 0;
 
 #include <ctime>
 int main() {
-	srand(time(0));
 
 	while (true) {
 		open_io("CON", "input.txt");
 		gena::main();
 		close_io();
-		open_io("input.txt", "patient_output.txt");
-		patient::main();
-		close_io();
 		open_io("input.txt", "dummy_output.txt");
 		dummy::main();
+		close_io();
+		open_io("input.txt", "patient_output.txt");
+		patient::main();
 		close_io();
 		open_io();
 

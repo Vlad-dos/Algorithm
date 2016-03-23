@@ -132,6 +132,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="nothing.cpp" />
+    <ClCompile Include="number.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="number_dummy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="task_selection.h" />
   </ItemGroup>
   <ItemGroup>

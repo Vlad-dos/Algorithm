@@ -3,8 +3,8 @@
 
 #ifdef checker
 
-#define A patient
-#define B dummy
+#define number patient
+#define number_dummy dummy
 #define gena gena
 
 namespace patient {

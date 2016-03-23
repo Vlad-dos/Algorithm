@@ -1,5 +1,9 @@
+#ifdef LOCAL
 #include "task_selection.h"
 #include "checker.h"
+#else
+#define number_dummy task
+#endif
 
 #define _CRT_SECURE_NO_WARNINGS
 
@@ -32,7 +36,7 @@
 
 using namespace std;
 
-namespace gena {
+namespace number_dummy {
 
 #if defined(_DEBUG)
 #define debug printf
@@ -60,7 +64,7 @@ namespace gena {
 #define all(a) (a).begin(), (a).end()
 
 	const int K = 18;
-	const ll MAXN = 2e3 + 10;
+	const ll MAXN = 1e6;
 	const int INF = 2e9 + 1;
 	const ll LONG_INF = 8e18;
 	const ll MOD = 1e9 + 7;
@@ -69,25 +73,43 @@ namespace gena {
 	const ll dx[4] = { -1, 0, 1, 0 };
 	const ll dy[4] = { 0, 1, 0, -1 };
 
-	int main();
+	ll digit_sum(ll n) {
+		ll sum = 0;
+		while (n) {
+			sum += (n % 10);
+			n /= 10;
+		}
+		return sum;
+	}
+
+	int main() {
+		cin.clear();
+		int n;
+		cin >> n;
+		ll i = 0;
+		while (digit_sum(i) != n) {
+			i += n;
+		}
+		cout << i;
+		return 0;
+	}
 }
 
-using namespace gena;
-
-int gena::main() {
-	int k = 0;
-	k = rand() % 80;
-	cout << k;
-
-	return 0;
-}
-
-#if defined(gena) && !defined(checker)
+#if defined(number_dummy) && !defined(checker)
 int main() {
-	freopen("input.txt", "w", stdout);
+#ifdef LOCAL
+	freopen("input.txt", "r", stdin);
+	//freopen("output.txt", "w", stdout);
 
-	gena::main();
-	gena::wait();
+	while (!cin.eof()) {
+		number_dummy::main();
+	}
+	number_dummy::wait();
+#else   
+	freopen("number_dummy.in ", "r", stdin);
+	freopen("number_dummy.out", "w", stdout);
+	number_dummy::main();
+#endif
 	return 0;
 }
 #endif

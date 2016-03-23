@@ -2,4 +2,4 @@
 
 //Name of file with main.
 //#define checker
-#define lis task
+#define checker task
