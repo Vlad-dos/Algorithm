@@ -3,9 +3,10 @@
 
 #ifdef checker
 
-#define number patient
-#define number_dummy dummy
+#define sequences patient
+#define nothing dummy
 #define gena gena
+#define check 0
 
 namespace patient {
 	int main();

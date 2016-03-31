@@ -64,7 +64,7 @@ int main() {
 		cout << "test number : " << cnt++ << " ";
 		while (dummy_in >> s1) {
 			patient_in >> s2;
-			if (s1 != s2) {
+			if (s1 != s2 && check) {
 				cout << "WA\n";
 				_getch();
 				return 0;

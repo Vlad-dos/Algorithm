@@ -131,12 +131,24 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="nice2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="nice2_precalc.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="nothing.cpp" />
     <ClCompile Include="number.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="number_dummy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="sequences.cpp">
       <SubType>
       </SubType>
     </ClCompile>

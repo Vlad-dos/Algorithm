@@ -75,9 +75,10 @@ namespace gena {
 using namespace gena;
 
 int gena::main() {
-	int k = 0;
-	k = rand() % 80;
-	cout << k << endl;
+	for (int n = 1; n <= 100; n++) {
+		cout << ((ll)rand() * INT_MAX + (ll)rand()) % (1LL << 50) + 1LL << endl;
+	}
+	cout << 0 << endl;
 
 	return 0;
 }
