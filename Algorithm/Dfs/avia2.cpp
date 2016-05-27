@@ -1,4 +1,4 @@
-#ifdef LOCAL
+#if defined(LOCAL) || defined(LINUX)
 #include "task_selection.h"
 #include "checker.h"
 #else
@@ -64,7 +64,7 @@ namespace avia2 {
 #define all(a) (a).begin(), (a).end()
 
 	const int K = 18;
-	const ll MAXN = 1e6;
+	const ll MAXN = 2000;
 	const int INF = 2e9 + 1;
 	const ll LONG_INF = 8e18;
 	const ll MOD = 1e9 + 7;
@@ -73,21 +73,68 @@ namespace avia2 {
 	const ll dx[4] = { -1, 0, 1, 0 };
 	const ll dy[4] = { 0, 1, 0, -1 };
 
+    struct edge {
+       int a, b, w;
+       edge(int a, int b, int w) : a(a), b(b), w(w) {}
+    };
+    vector<edge> edges;
+
+    int parent[MAXN];
+    int k;
+    int get(int i) {
+        if (parent[i] != i)
+            parent[i] = get(parent[i]);
+        return parent[i];
+    }
+
+    void merge(int a, int b) {
+        a = get(a);
+        b = get(b);
+        if (a != b) {
+            k--;
+            parent[a] = b;
+        }
+    }
+
 	int main() {
+        int n;
+        scanf("%d", &n);
+        k = n;
+
+        for (int i = 0; i < n; i++) { 
+            parent[i] = i;
+            for (int j = 0; j < n; j++) {
+                int w;
+                scanf("%d", &w);
+                edges.push_back(edge(i, j, w));
+            }
+        }
+
+        sort(all(edges), [](edge a, edge b) {
+                return a.w < b.w;
+            });
+
+        for (auto i : edges) {
+            merge(i.a, i.b);
+            if (k == 1) {
+                cout << i.w << endl;
+                return 0;
+            }
+        }
+
+        cout << "WHAT???" << endl;
 
 		return 0;
 	}
 }
 
-#if defined(avia2) && !defined(checker)
+#if (defined(avia2) && !defined(checker)) || defined(LINUX)
 int main() {
-#ifdef LOCAL
+#if defined(LOCAL) || defined(LINUX)
 	freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
 
-	while (!cin.eof()) {
-		avia2::main();
-	}
+    avia2::main();
 	avia2::wait();
 #else   
 	freopen("avia.in ", "r", stdin);
