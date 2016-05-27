@@ -64,7 +64,7 @@ namespace avia {
 #define all(a) (a).begin(), (a).end()
 
 	const int K = 18;
-	const ll MAXN = 1e6;
+	const ll MAXN = 2000;
 	const int INF = 2e9 + 1;
 	const ll LONG_INF = 8e18;
 	const ll MOD = 1e9 + 7;
@@ -73,21 +73,54 @@ namespace avia {
 	const ll dx[4] = { -1, 0, 1, 0 };
 	const ll dy[4] = { 0, 1, 0, -1 };
 
+    int n;
+    int g[MAXN][MAXN];
+    int used[MAXN];
+
+    int dfs(int v, int seed, int max_edge) {
+        int cnt = 1;
+        used[v] = seed;
+        for (int i = 0; i < n; i++) {
+            if (used[i] != seed && i != v && g[i][v] <= max_edge) {
+                cnt += dfs(i, seed, max_edge);
+            }
+        }
+        return cnt;
+    }
+
+    int seed = 1;
+    bool check(int m) {
+        return dfs(0, seed++, m) == n;
+    }
+
+    vector<int> edges;
+
 	int main() {
+        scanf("%d\n", &n);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                scanf("%d", &g[i][j]);
+                edges.push_back(g[i][j]);
+            }
+        }
+
+        sort(all(edges));
+
+        cout << *lower_bound(edges.begin(), edges.end(), INF, [](int a, int b) {
+            return check(a) < check(b);
+        }) << endl;
 
 		return 0;
 	}
 }
 
-#if defined(avia) && !defined(checker)
+#if (defined(avia) && !defined(checker)) || defined(LINUX)
 int main() {
-#ifdef LOCAL
+#if defined(LOCAL) || defined(LINUX)
 	freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
 
-	while (!cin.eof()) {
 		avia::main();
-	}
 	avia::wait();
 #else   
 	freopen("avia.in ", "r", stdin);
