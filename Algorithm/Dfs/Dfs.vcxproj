@@ -117,6 +117,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bipartite.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="bridges.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="checker.cpp" />
     <ClCompile Include="cond.cpp">
       <SubType>
