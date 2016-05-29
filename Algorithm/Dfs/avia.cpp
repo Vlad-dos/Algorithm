@@ -77,12 +77,13 @@ namespace avia {
     int g[MAXN][MAXN];
     int used[MAXN];
  
-    int dfs(int v, int seed, int max_edge) {
+    int dfs(int v, int seed, int max_edge, bool reversed) {
+        /* cout << "dfs " << v << ' ' << seed << ' ' << max_edge << ' ' << reversed << endl; */
         int cnt = 1;
         used[v] = seed;
         for (int i = 0; i < n; i++) {
-            if (used[i] != seed && i != v && g[i][v] <= max_edge) {
-                cnt += dfs(i, seed, max_edge);
+            if (used[i] != seed && i != v && ((!reversed && g[i][v] <= max_edge) || (reversed && g[v][i] <= max_edge))) {
+                cnt += dfs(i, seed, max_edge, reversed);
             }
         }
         return cnt;
@@ -90,7 +91,7 @@ namespace avia {
  
     int seed = 1;
     bool check(int m) {
-        return dfs(0, seed++, m) == n;
+        return dfs(0, seed++, m, false) == n && dfs(0, seed++, m, true) == n;
     }
  
     vector<int> edges;
@@ -103,6 +104,8 @@ namespace avia {
                 edges.push_back(g[i][j]);
             }
         }
+
+        edges.push_back(INF);
  
         sort(all(edges));
  

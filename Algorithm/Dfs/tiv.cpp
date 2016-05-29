@@ -1,4 +1,4 @@
-#ifdef LOCAL
+#if defined(LOCAL) && !defined(LINUX)
 #include "task_selection.h"
 #include "checker.h"
 #else
@@ -77,10 +77,14 @@ namespace tiv {
 	vector<int> g[MAXN];
 	string s;
 	string last;
+    bool lead[MAXN];
+    bool cant_lead[MAXN];
 
 	vector<int> ans;
 	int a[MAXN];
 	int used[MAXN];
+
+    vector<string> input;
 
 	void dfs(int v) {
 		used[v] = 1;
@@ -101,18 +105,43 @@ namespace tiv {
 		last = "";
 		for (int i = 0; i < n; i++) {
 			cin >> s;
+            input.push_back(s);
+            if (s.size() > 1) {
+                lead[s[0] - 'a'] = true;
+            }
+            if (s == last || s.size() < last.size()) {
+                cout << "No" << endl;
+                return 0;
+            }
 			if (s.size() == last.size()) {
  				for (size_t i = 0; i < s.size(); i++) {
 					if (s[i] != last[i]) {
 						int a = s[i] - 'a';
 						int b = last[i] - 'a';
 						g[b].push_back(a);
+                        cant_lead[a] = true;
 						break;
 					}
 				}
 			}
 			last = s;
 		}
+
+        int zero;
+        bool f = false;
+        for (int i = 0; i < 10; i++) {
+            if (!lead[i] && !cant_lead[i]) {
+                f = true;
+                used[i] = 2;
+                zero = i;
+                break;
+            }
+        }
+
+        if (!f) {
+            cout << "No" << endl;
+            return 0;
+        }
 
 		for (int i = 0; i < 10; i++) {
 			if (!used[i]) {
@@ -122,30 +151,43 @@ namespace tiv {
 
 		reverse(all(ans));
 		cout << "Yes" << endl;
-		int cnt = 0;
-		assert(ans.size() == 10);
+		int cnt = 1;
+		assert(ans.size() == 9);
 		for (auto i : ans) {
 			a[i] = cnt++;
 		}
+        a[zero] = 0;
 
 		for (int i = 0; i < 10; i++) {
 			cout << a[i] << ' ';
 		}
 		cout << endl;
 
+        vector<int> result;
+        for (auto s : input) {
+            for (auto& i : s) {
+                i = char(a[i - 'a'] + '0');
+            }
+            result.push_back(atoi(s.c_str()));
+        }
+
+        /* int last_int = -1; */
+        /* for (auto i : result) { */
+        /*     assert(i > last_int); */
+        /*     last_int = i; */
+        /* } */
+
 		return 0;
 	}
 }
 
-#if defined(tiv) && !defined(checker)
+#if (defined(tiv) && !defined(checker))
 int main() {
-#ifdef LOCAL
+#if defined(LOCAL) || defined(LINUX)
 	freopen("input.txt", "r", stdin);
 	//freopen("output.txt", "w", stdout);
 
-	while (!cin.eof()) {
-		tiv::main();
-	}
+    tiv::main();
 	tiv::wait();
 #else   
 	freopen("tiv.in ", "r", stdin);
