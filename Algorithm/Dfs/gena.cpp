@@ -75,12 +75,19 @@ namespace gena {
 using namespace gena;
 
 int gena::main() {
-	cout << rand() % 100 << ' ' << rand() % 100 << endl;
+    int n = rand() % 20 + 10;
+    cout << n << endl;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cout << rand() % 1000000 << ' ';
+        }
+        cout << endl;
+    }
 
 	return 0;
 }
 
-#if defined(gena) && !defined(checker)
+#if defined(gena) && !defined(checker) || defined(LINUX)
 int main() {
 	freopen("input.txt", "w", stdout);
 
