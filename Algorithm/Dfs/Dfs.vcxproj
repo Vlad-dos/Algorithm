@@ -117,50 +117,50 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="avia.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="avia2.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="checker.cpp" />
-    <ClCompile Include="components.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="cond.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="gena.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="hamiltonian.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="nothing.cpp" />
-    <ClCompile Include="shortpath.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="task_selection.h" />
-    <ClCompile Include="tiv.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="topsort.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-  </ItemGroup>
+      <ClCompile Include="avia.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="avia2.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="checker.cpp" />
+      <ClCompile Include="components.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="cond.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="game.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="gena.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="hamiltonian.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="nothing.cpp" />
+      <ClCompile Include="shortpath.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="task_selection.h" />
+      <ClCompile Include="tiv.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+      <ClCompile Include="topsort.cpp">
+        <SubType>
+        </SubType>
+      </ClCompile>
+    </ItemGroup>
   <ItemGroup>
     <Text Include="dummy_output.txt" />
     <Text Include="input.txt" />

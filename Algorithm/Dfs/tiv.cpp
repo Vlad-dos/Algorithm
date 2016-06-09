@@ -114,6 +114,7 @@ namespace tiv {
                 return 0;
             }
 			if (s.size() == last.size()) {
+				bool f = false;
  				for (size_t i = 0; i < s.size(); i++) {
 					if (s[i] != last[i]) {
 						int a = s[i] - 'a';
@@ -122,6 +123,10 @@ namespace tiv {
                         cant_lead[a] = true;
 						break;
 					}
+				}
+				if (!f) {
+					cout << "No" << endl;
+					exit(0);
 				}
 			}
 			last = s;
