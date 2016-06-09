@@ -47,9 +47,8 @@ struct edge {
     int a, b;
     bool same;
     int t;
-    edge(int a, int b, bool same) : a(a), b(b), same(same) {
-        int static time = 0;
-        t = time++;
+    edge(int a, int b, bool same, int time) : a(a), b(b), same(same) {
+        t = time;
     };
 };
 
@@ -65,11 +64,11 @@ bool dfs(int v, int time, int seed) {
     for (auto& i : g[v]) {
         if (i.t <= time) {
             if (used[i.b] != seed) {
-                color[i.b] = color[v] ^ i.same;
+                color[i.b] = color[v] ^ !i.same;
                 correct &= dfs(i.b, time, seed); 
             } else {
-                /* cout << i.b << ' ' << v << ' ' << i.same << endl; */
                 if (color[i.b] != (color[v] ^ !i.same)) {
+                    /* cout << "FALSEEEEE " << i.a << " ---> " << i.b << ' ' << i.same << ' ' << i.t << endl; */
                     return false;
                 }
             }
@@ -106,11 +105,12 @@ int main() {
         char type;
         cin >> a >> b >> type;
         a--, b--;
-        g[a].push_back(edge(a, b, type == 'T')); 
+        g[a].push_back(edge(a, b, type == 'T', i)); 
+        g[b].push_back(edge(b, a, type == 'T', i));
         iamlasy.push_back(i);
     }
 
-    g[0].push_back(edge(0, 0, false));
+    g[0].push_back(edge(0, 0, false, m));
     iamlasy.push_back(m);
 
     /* for (int i = 0; i < n; i++) { */
@@ -121,7 +121,7 @@ int main() {
 
     cout << *upper_bound(all(iamlasy), 0, [](int a, int b){
             return check(a) > check(b);
-            }) - 1 << endl;
+            }) << endl;
 
     return 0;
 }

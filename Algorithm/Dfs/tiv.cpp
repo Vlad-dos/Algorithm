@@ -64,7 +64,7 @@ namespace tiv {
 #define all(a) (a).begin(), (a).end()
 
 	const int K = 18;
-	const ll MAXN = 30;
+	const ll MAXN = 70;
 	const int INF = 2e9 + 1;
 	const ll LONG_INF = 8e18;
 	const ll MOD = 1e9 + 7;
@@ -129,7 +129,7 @@ namespace tiv {
 
         int zero;
         bool f = false;
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 26; i++) {
             if (!lead[i] && !cant_lead[i]) {
                 f = true;
                 used[i] = 2;
@@ -143,7 +143,7 @@ namespace tiv {
             return 0;
         }
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 26; i++) {
 			if (!used[i]) {
 				dfs(i);
 			}
@@ -152,13 +152,12 @@ namespace tiv {
 		reverse(all(ans));
 		cout << "Yes" << endl;
 		int cnt = 1;
-		assert(ans.size() == 9);
 		for (auto i : ans) {
 			a[i] = cnt++;
 		}
         a[zero] = 0;
 
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 26; i++) {
 			cout << a[i] << ' ';
 		}
 		cout << endl;
