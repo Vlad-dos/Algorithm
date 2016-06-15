@@ -132,7 +132,7 @@ namespace tiv {
 			last = s;
 		}
 
-        int zero;
+        int zero = 0;
         bool f = false;
         for (int i = 0; i < 26; i++) {
             if (!lead[i] && !cant_lead[i]) {
