@@ -122,6 +122,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="mindiff.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="negcycle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="nothing.cpp" />
     <ClCompile Include="pathbge1.cpp">
       <SubType>
